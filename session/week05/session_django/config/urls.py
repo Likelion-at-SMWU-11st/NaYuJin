@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from demos.views import helloBabyLion
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('crazy/',helloBabyLion), 
+    # 왼쪽의 url로 들어오면 오른쪽의 함수를 실행시켜라
+    # 이때 함수는 가져와야하므로, 위에서 임포트
 ]
