@@ -13,6 +13,7 @@ class CommentInline(admin.TabularInline):
     verbose_name_plural='댓글'
 
 
+
 @admin.register(Post)
 class PostModelAdmin(admin.ModelAdmin):
     list_display=['id','image','content','created_at','view_count','write']
@@ -21,5 +22,12 @@ class PostModelAdmin(admin.ModelAdmin):
     list_filter=['created_at',]
     readonly_fields=['view_count','created_at']
     inlines=[CommentInline,]
+
+    actions=['make_published']
+
+    def make_published(modeladmin,request,queryset):
+        for item in queryset:
+            item.content='운영규칙 위반으로 인한 게시글 삭제 처리'
+            item.save()
 
 
