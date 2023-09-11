@@ -3,10 +3,7 @@ package com.yj.likelion.crud.post;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,4 +25,17 @@ public class PostController {
         logger.info(postDto.toString());
         this.postList.add(postDto);
     }
+
+    @GetMapping("read-all")
+    public List<PostDto> readPostAll(){
+        logger.info("in read all");
+        return this.postList;
+    }
+
+    @GetMapping("read-one")
+    public PostDto readPostOne(@RequestParam("id") int id){
+        logger.info("in read one");
+        return this.postList.get(id);
+    }
+    
 }
