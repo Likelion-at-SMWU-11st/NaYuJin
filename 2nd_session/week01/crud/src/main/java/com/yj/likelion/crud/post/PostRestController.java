@@ -2,6 +2,7 @@ package com.yj.likelion.crud.post;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class PostRestController {
     // http://localhost:8080/post
     // POST /post
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public void createPost(@RequestBody PostDto postDto){
         logger.info(postDto.toString());
         this.postList.add(postDto);
@@ -48,6 +50,7 @@ public class PostRestController {
     // PUT /post/0/
     // PUT /post?id=0/
     @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updatePost(
             @PathVariable("id") int id,
             @RequestBody PostDto postDto
