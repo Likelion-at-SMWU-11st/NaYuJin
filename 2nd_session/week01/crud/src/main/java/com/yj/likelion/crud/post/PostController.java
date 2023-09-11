@@ -52,4 +52,9 @@ public class PostController {
         }
         this.postList.set(id, targetPost);
     }
+
+    @DeleteMapping("delete")
+    public void deletePost(@RequestParam("id") int id){
+        this.postList.remove(id);
+    }
 }
