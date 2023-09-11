@@ -10,7 +10,7 @@ import java.util.List;
 
 @Controller
 @ResponseBody
-@RequestMapping("post")
+//@RequestMapping("post")
 public class PostController {
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
     private final List<PostDto> postList; // final 선언했으니 초기화해줘야 빨간줄 없
