@@ -44,6 +44,24 @@ public class PostRestController {
         return this.postList.get(id);
     }
 
+    // 3 update
+    // PUT /post/0/
+    // PUT /post?id=0/
+    @PutMapping("{id}")
+    public void updatePost(
+            @PathVariable("id") int id,
+            @RequestBody PostDto postDto
+    ){
+        PostDto targetPost = this.postList.get(id);
+        if(postDto.getTitle()!=null){
+            targetPost.setTitle(postDto.getTitle());
+        }
+        if(postDto.getContent()!=null){
+            targetPost.setContent(postDto.getContent());
+        }
+        this.postList.set(id, targetPost);
+    }
+
 
 
 }
