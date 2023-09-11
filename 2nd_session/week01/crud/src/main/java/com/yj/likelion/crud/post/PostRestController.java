@@ -2,10 +2,7 @@ package com.yj.likelion.crud.post;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +17,9 @@ public class PostRestController {
         this.postList=new ArrayList<>();
     }
 
-    // http://localhost:8080/post
-
     // 1 createPost
-
+    // http://localhost:8080/post
+    // POST /post
     @PostMapping()
     public void createPost(@RequestBody PostDto postDto){
         logger.info(postDto.toString());
@@ -31,6 +27,23 @@ public class PostRestController {
 
     }
 
-    
+    // 2 get
+    // http://localhost:8080/post
+    // GET /post
+    @GetMapping()
+    public List<PostDto> readPostAll(){
+        logger.info("iin read post all");
+        return this.postList;
+    }
+
+    // GET /post/0/
+    // GET /post?id=0/
+    @GetMapping("{id}")
+    public PostDto readPost(@PathVariable("id") int id){
+        logger.info("in read post");
+        return this.postList.get(id);
+    }
+
+
 
 }
